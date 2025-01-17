@@ -30,20 +30,20 @@ function displayAllBooks() {
 
         // Add a cell to the row for the title
         var newCell = newRow.insertCell();
-        newCell.innerHTML = book.title;
+        newCell.innerText = book.title;
 
         // Add a cell for the author
         newCell = newRow.insertCell();
-        newCell.innerHTML = book.author;
+        newCell.innerText = book.author;
         
         // Add a cell for the number of pages
         newCell = newRow.insertCell();
-        newCell.innerHTML = book.pages;
+        newCell.innerText = book.pages;
 
         // Add a cell for the read status
         newCell = newRow.insertCell();
-
-        newCell.innerHTML = book.read;
+        var newTextNode = document.createTextNode(book.read);
+        newCell.appendChild(newTextNode);
     });
 }
 
