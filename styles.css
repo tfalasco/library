@@ -36,6 +36,16 @@ html {
     padding: 10px;
   }
 
+  .deleteBtn {
+    padding: 5px;
+  }
+
+  .deleteBtn img {
+    display: block;
+    height: 1em;
+    width: 1em;
+  }
+
   /* Modal Styling */
   ::backdrop {
     background-image:radial-gradient(

@@ -35,8 +35,20 @@ addBookDialog.addEventListener("close", (e) => {
     clearDialog();  
 })
 
+// A counter-like function to generate book IDs
+function bookIdGenerator() {
+    let id = 0;
+
+    return function() {
+        return id++;
+    };
+}
+// This is an instance of the id generator
+const generateBookId = bookIdGenerator();
+
 // The book constructor
 function Book(title, author, pages, read) {
+    this.id = generateBookId();
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -86,6 +98,26 @@ function displayOneBook(book) {
     newCell = newRow.insertCell();
     var newTextNode = document.createTextNode(book.read);
     newCell.appendChild(newTextNode);
+
+    // Add a cell for a button to allow the user to remove this book
+    newCell = newRow.insertCell();
+    var newButton = document.createElement("button");
+    newButton.className="deleteBtn";
+    newButton.innerHTML = "<img src='img/close-thick.svg'>";
+    newButton.addEventListener("click", () => {
+        // Cycle through the library array and remove the element
+        // with this book.id.
+        for (aBook of myLibrary) {
+            if (aBook.id === book.id) {
+                var idx = myLibrary.indexOf(aBook);
+                myLibrary.splice(idx, 1);
+            }
+        }
+        // And remove this row from the table
+        const rowToDelete = newButton.parentNode.parentNode;
+        rowToDelete.parentNode.removeChild(rowToDelete);
+    });
+    newCell.appendChild(newButton);
 }
 
 // Function to clear the dialog fields
