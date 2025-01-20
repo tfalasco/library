@@ -96,8 +96,21 @@ function displayOneBook(book) {
 
     // Add a cell for the read status
     newCell = newRow.insertCell();
-    var newTextNode = document.createTextNode(book.read);
-    newCell.appendChild(newTextNode);
+    var newCheckbox = document.createElement("input");
+    newCheckbox.type = "checkbox";
+    newCheckbox.name = "readChk";
+    newCheckbox.checked = book.read;
+    newCheckbox.addEventListener("change", () => {
+        // Cycle through the library array and toggle the read value
+        // for this book.
+        for (aBook of myLibrary) {
+            if (aBook.id === book.id) {
+                aBook.read = newCheckbox.checked;
+            }
+        }
+    })
+    newCell.appendChild(newCheckbox);
+    
 
     // Add a cell for a button to allow the user to remove this book
     newCell = newRow.insertCell();
