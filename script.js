@@ -15,6 +15,7 @@ const readCheckbox = document.querySelector("#read");
 // Add event listeners
 addBookButton.addEventListener("click", () => {
     addBookDialog.showModal();
+    authorInput.focus();
 });
 
 cancelButton.addEventListener("click", () => {
