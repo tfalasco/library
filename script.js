@@ -22,11 +22,19 @@ cancelButton.addEventListener("click", () => {
 });
 
 confirmButton.addEventListener("click", (event) => {
+    // Prevent the button from submitting the form
     event.preventDefault();
     addBookDialog.close("confirm");
 });
 
-addBookDialog.addEventListener("close", (e) => {
+addBookDialog.addEventListener("keydown", (e) => {
+    // Close the dialog with the "cancel" return value
+    if (e.key === "Escape") {
+        addBookDialog.close("cancel");
+    }
+})
+
+addBookDialog.addEventListener("close", () => {
     if (addBookDialog.returnValue === "confirm") {
         const book = new Book(titleInput.value, authorInput.value, pagesInput.value, readCheckbox.checked);
         myLibrary.push(book);
