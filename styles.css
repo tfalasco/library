@@ -2,22 +2,50 @@
 html {
     font-family: sans-serif;
   }
+
+  /*Page Styling*/
+  .main-layout {
+    display: grid;
+    justify-items: center;
+  }
+
+  h1 {
+    font-size: x-large;
+    font-weight: normal;
+    color: rgb(62,70,71);
+  }
+
+  .button-container {
+    justify-self: end;
+    padding-top: 8px;
+  }
+
+  button {
+    padding: 5px;
+    border: 2px solid rgb(51,106,133);
+    border-radius: 4px;
+  }
+
+  button:hover, button:focus {
+    background-color: rgb(171,171,171);
+  }
   
   /*Table Styling*/
   table {
     border-collapse: collapse;
-    border: 2px solid rgb(200,200,200);
+    border: 2px solid rgb(51,106,133);
+    border-radius: 20px;
     letter-spacing: 1px;
     font-size: 0.8rem;
   }
   
   td, th {
-    border: 1px solid rgb(190,190,190);
+    border: 1px solid rgb(148,177,197);
     padding: 10px 20px;
   }
   
   th {
-    background-color: rgb(235,235,235);
+    background-color: rgb(171,171,171);
   }
   
   td {
@@ -36,17 +64,26 @@ html {
     padding: 10px;
   }
 
-  .deleteBtn {
-    padding: 5px;
-  }
-
   .deleteBtn img {
     display: block;
     height: 1em;
     width: 1em;
   }
 
+  .deleteBtn {
+    border-color: rgb(99, 56, 54);
+  }
+
+  input[type="checkbox"] {
+    accent-color: rgb(148,177,197);
+    
+  }
+
   /* Modal Styling */
+  :modal {
+    border: 2px solid rgb(51,106,133);
+    border-radius: 4px;
+  }
   ::backdrop {
     background-image:radial-gradient(
       #ddd,
@@ -56,8 +93,31 @@ html {
   }
 
   /* Form Styling */
-  label {
+  form label {
     display: inline-block;
     width: 3.5rem;
+  }
+
+  form input {
+    border: 1px solid rgb(51, 106, 133);
+    border-radius: 4px;
+  }
+
+  form input[type="text"], input[type="number"] {
+    padding: 2px;
+  }
+
+  form button {
+    width: 3.5rem;
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #btnCancel {
+    border-color: rgb(99, 56, 54);
   }
   
