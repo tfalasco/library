@@ -7,17 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <title>Library</title>
 </head>
-<table id="table">
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
-        <th>Remove</th>
-    </tr>
-</table>
+<div class="main-layout">
+    <h1>Ted's Library</h1>
+    <div>
+        <table id="table">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+                <th>Remove</th>
+            </tr>
+        </table>
+        <div class="button-container"><button id="btnAddBook">Add Book</button></div>
+    </div>
+</div>
 
-<p><button id="btnAddBook">Add Book</button></p>
+<!-- 
+Modal dialog form for adding a new book.
+This is not visible by default. 
+-->
 <dialog id="addBookDialog">
     <p>Please enter new book details</p>
     <form method="dialog">
