@@ -60,19 +60,36 @@ class BookIdGenerator {
     }
 }
 
-// The book constructor
-function Book(title, author, pages, read) {
-    this.id = BookIdGenerator.getId();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        let readString = "not read yet";
-        if (read === true) {
-            readString = "already read";
-        }
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readString}.`
+// The book class
+class Book {
+    #id;
+    #title;
+    #author;
+    #pages;
+    read;
+
+    constructor(title, author, pages, read) {
+        this.#id = BookIdGenerator.getId();
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.read = read;
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    get title() {
+        return this.#title;
+    }
+
+    get author() {
+        return this.#author;
+    }
+
+    get pages() {
+        return this.#pages;
     }
 }
 
