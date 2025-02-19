@@ -44,30 +44,52 @@ addBookDialog.addEventListener("close", () => {
     clearDialog();  
 })
 
-// A counter-like function to generate book IDs
-function bookIdGenerator() {
-    let id = 0;
+// A class to generate book IDs via a counter
+// All fields and methods are static and should be called on the class.
+// The constructor throws a TypeError so that the class cannnot be instantiated.
+class BookIdGenerator {
+    static #id = 0;
+    static #instance = null;
 
-    return function() {
-        return id++;
-    };
+    constructor() {
+        throw new TypeError("BookIdGenerator is not constructable.");
+    }
+
+    static getId() {
+        return BookIdGenerator.#id++;
+    }
 }
-// This is an instance of the id generator
-const generateBookId = bookIdGenerator();
 
-// The book constructor
-function Book(title, author, pages, read) {
-    this.id = generateBookId();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        let readString = "not read yet";
-        if (read === true) {
-            readString = "already read";
-        }
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readString}.`
+// The book class
+class Book {
+    #id;
+    #title;
+    #author;
+    #pages;
+    read;
+
+    constructor(title, author, pages, read) {
+        this.#id = BookIdGenerator.getId();
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.read = read;
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    get title() {
+        return this.#title;
+    }
+
+    get author() {
+        return this.#author;
+    }
+
+    get pages() {
+        return this.#pages;
     }
 }
 
